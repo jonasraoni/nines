@@ -13,14 +13,16 @@ namespace Nines\UserBundle\Entity;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Nines\UtilBundle\Entity\AbstractEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Nines\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="nines_user")
+ * @ORM\HasLifecycleCallbacks
  */
-class User extends AbstractEntity implements UserInterface {
+class User extends AbstractEntity implements UserInterface, PasswordAuthenticatedUserInterface {
     /**
      * @ORM\Column(type="boolean")
      */
@@ -89,6 +91,15 @@ class User extends AbstractEntity implements UserInterface {
      * @see UserInterface
      */
     public function getUsername() : string {
+        return $this->getUserIdentifier();
+    }
+
+    /**
+     * Alias for getEmail.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier() : string {
         return (string) $this->email;
     }
 
@@ -140,7 +151,7 @@ class User extends AbstractEntity implements UserInterface {
     /**
      * @see UserInterface
      */
-    public function getPassword() : string {
+    public function getPassword() : ?string {
         return (string) $this->password;
     }
 

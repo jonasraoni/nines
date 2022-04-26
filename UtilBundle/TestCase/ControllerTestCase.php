@@ -10,10 +10,9 @@ declare(strict_types=1);
 
 namespace Nines\UtilBundle\TestCase;
 
+use App\Repository\Repository;
 use DAMA\DoctrineTestBundle\Doctrine\DBAL\StaticDriver;
 use Doctrine\ORM\EntityManagerInterface;
-use Nines\UserBundle\Entity\User;
-use Nines\UserBundle\Repository\UserRepository;
 use Soundasleep\Html2Text;
 use Soundasleep\Html2TextException;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -39,7 +38,7 @@ abstract class ControllerTestCase extends WebTestCase {
             /** @var UserRepository $repository */
             $repository = $this->em->getRepository(User::class);
             $user = $repository->findOneByEmail($credentials['username']);
-            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
             $session->set('_security_main', serialize($token));
             $session->save();
             $cookie = new Cookie($session->getName(), $session->getId());
