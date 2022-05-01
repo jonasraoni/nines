@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Nines\UtilBundle\TestCase;
 
-use App\Repository\Repository;
 use DAMA\DoctrineTestBundle\Doctrine\DBAL\StaticDriver;
 use Doctrine\ORM\EntityManagerInterface;
+use Nines\UserBundle\Entity\User;
 use Soundasleep\Html2Text;
 use Soundasleep\Html2TextException;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
