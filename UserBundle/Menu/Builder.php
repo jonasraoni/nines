@@ -40,7 +40,7 @@ class Builder extends AbstractBuilder {
 
         $user = $menu->addChild('user', [
             'uri' => '#',
-            'label' => $user->getUsername(),
+            'label' => $user->getUserIdentifier(),
         ]);
 
         $user->setAttribute('dropdown', true);
