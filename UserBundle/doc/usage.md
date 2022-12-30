@@ -4,7 +4,7 @@ Using the User Bundle
 Database Tables
 ---------------
 
-This bundle uses a single database table: `nines_user`. Once the bundle is 
+This bundle uses a single database table: `appuser`. Once the bundle is 
 enabled, you can create the tables with a doctrine migration.
 
 Migrations are not included in the bundles, you will need to generate them

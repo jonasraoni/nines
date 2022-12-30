@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="Nines\UserBundle\Repository\UserRepository")
- * @ORM\Table(name="nines_user")
+ * @ORM\Table(name="appuser")
  * @ORM\HasLifecycleCallbacks
  */
 class User extends AbstractEntity implements UserInterface, PasswordAuthenticatedUserInterface {
